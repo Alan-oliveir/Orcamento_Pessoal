@@ -14,8 +14,8 @@ from tkcalendar import Calendar, DateEntry
 from datetime import date
 
 # import funçoes da view
-from view import bar_valores, inserir_categoria, ver_categorias, inserir_receita, inserir_gastos, tabela, \
-    deletar_gastos, deletar_receitas
+from view import bar_valores, pie_valores, inserir_categoria, ver_categorias, inserir_receita, inserir_gastos, tabela, \
+    deletar_gastos, deletar_receitas, ver_receitas, percentagem_valor
 
 ################# cores ###############
 co0 = "#2e2d2b"  # Preta
@@ -196,7 +196,7 @@ def inserir_gastos_main():
 # percentagem ------------------------------------
 
 def percentagem():
-    l_nome = Label(frameCenter, text="Porcentagem da receita gasta", height=1, anchor=NW, font=('Verdana 12 '), bg=co1,
+    l_nome = Label(frameCenter, text="Porcentagem da receita restante", height=1, anchor=NW, font=('Verdana 12 '), bg=co1,
                    fg=co4)
     l_nome.place(x=7, y=5)
 
@@ -207,9 +207,9 @@ def percentagem():
 
     bar = Progressbar(frameCenter, length=180, style='black.Horizontal.TProgressbar')
     bar.place(x=10, y=35)
-    bar['value'] = 50
+    bar['value'] = percentagem_valor()[0]
 
-    valor = 50
+    valor = percentagem_valor()[0]
     print(valor)
     l_percentagem = Label(frameCenter, text='{:,.2f} %'.format(valor), height=1, anchor=NW, font=('Verdana 12 '),
                           bg=co1,
@@ -225,7 +225,7 @@ percentagem()
 def grafico_bar():
     # obtendo valores de meses
     lista_meses = ['Renda', 'Despesa', 'Saldo']
-    lista_valores = [345, 225, 534]
+    lista_valores = bar_valores()
 
     # faça figura e atribua objetos de eixo
     figura = plt.Figure(figsize=(4, 3.45), dpi=60)
@@ -271,7 +271,7 @@ grafico_bar()
 # -----------------------------------------------------------------------------------------
 # funcao de resumo total
 def resumo():
-    valor = [345, 225, 534]
+    valor = bar_valores()
 
     l_linha = Label(frameCenter, text="", width=215, height=1, anchor=NW, font=('arial 1 '), bg='#545454', )
     l_linha.place(x=309, y=52)
@@ -311,8 +311,8 @@ def grafico_pie():
     # faça figura e atribua objetos de eixo
     figura = plt.Figure(figsize=(5, 3), dpi=90)
     ax = figura.add_subplot(111)
-    lista_valores = [345, 225, 534]
-    lista_categorias = ['Renda', 'Despesa', 'Saldo']
+    lista_valores = pie_valores()[1]
+    lista_categorias = pie_valores()[0]
 
     # only "explode" the 2nd slice (i.e. 'Hogs')
     explode = []
