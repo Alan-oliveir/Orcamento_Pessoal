@@ -44,7 +44,7 @@ frame_gra_2 = Frame(frame_center, width=580, height=250, bg=co2)
 frame_gra_2.place(x=415, y=5)
 
 # Abrindo imagem
-app_img = Image.open('D:/Projetos/Orcamento_Pessoal/images/icons/icons8-budget-48.png')
+app_img = Image.open('/images/icons/icon-budget.png')
 app_img = app_img.resize((45, 45))
 app_img = ImageTk.PhotoImage(app_img)
 
