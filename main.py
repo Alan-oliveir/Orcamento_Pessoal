@@ -72,18 +72,18 @@ frameCenter.grid(row=1, column=0, padx=0, pady=1, sticky=NSEW)
 frameBottom = Frame(janela, width=1043, height=300, bg=co1, relief="flat")
 frameBottom.grid(row=2, column=0, padx=10, pady=0, sticky=NSEW)
 
-frame_gra_2 = Frame(frameCenter, width=580, height=250, bg=co2)
-frame_gra_2.place(x=415, y=5)
+frame_right = Frame(frameCenter, width=580, height=250, bg=co2)
+frame_right.place(x=415, y=5)
 
 # ==========================
 # Logo
 # ==========================
-app_img = Image.open("D:/Projetos/Orcamento_Pessoal/images/icons/icon-budget.png")
+app_img = Image.open("images/icons/icon-budget.png")
 app_img = app_img.resize((45, 45))
 app_img = ImageTk.PhotoImage(app_img)
 
 app_logo = Label(frameTop, image=app_img, text=" Orçamento pessoal", width=900, compound=LEFT, padx=5, relief=RAISED,
-                 anchor=NW, font=('Verdana 20 bold'), bg=co1, fg=co4)
+                 anchor=NW, font='Verdana 20 bold', bg=co1, fg=co4)
 
 app_logo.place(x=0, y=0)
 
@@ -346,7 +346,7 @@ def grafico_pie():
            startangle=90)
     ax.legend(lista_categorias, loc="center right", bbox_to_anchor=(1.55, 0.50))
 
-    canva_categoria = FigureCanvasTkAgg(figura, frame_gra_2)
+    canva_categoria = FigureCanvasTkAgg(figura, frame_right)
     canva_categoria.get_tk_widget().grid(row=0, column=0)
 
 
@@ -367,7 +367,7 @@ frame_configuracao.grid(row=0, column=2, padx=5)
 # ==============================
 # Monthly income table
 # ==============================
-l_income = Label(frameCenter, text="Tabela Receitas e Despesas", height=1, anchor=NW, font=('Verdana 12'), bg=co1,
+l_income = Label(frameCenter, text="Tabela Receitas e Despesas", height=1, anchor=NW, font='Verdana 12', bg=co1,
                  fg=co4)
 l_income.place(x=5, y=309)
 
@@ -416,7 +416,7 @@ l_descricao = Label(frame_operacoes, text="Insira novas despesas", height=1, anc
                     font='Verdana 10 bold', bg=co1, fg=co4)
 l_descricao.place(x=10, y=10)
 
-l_descricao = Label(frame_operacoes, text="Categoria", height=1, anchor=NW, relief="flat", font=('Ivy 10'), bg=co1,
+l_descricao = Label(frame_operacoes, text="Categoria", height=1, anchor=NW, relief="flat", font='Ivy 10', bg=co1,
                     fg=co4)
 l_descricao.place(x=10, y=40)
 
@@ -428,63 +428,63 @@ combo_categoria_despesas = ttk.Combobox(frame_operacoes, width=10, font=('Ivy 10
 combo_categoria_despesas['values'] = categorias
 combo_categoria_despesas.place(x=110, y=41)
 
-l_cal_despesas = Label(frame_operacoes, text="Data", height=1, anchor=NW, font=('Ivy 10 '), bg=co1, fg=co4)
+l_cal_despesas = Label(frame_operacoes, text="Data", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
 l_cal_despesas.place(x=10, y=70)
 
 e_cal_despesas = DateEntry(frame_operacoes, width=12, background='darkblue', foreground='white', borderwidth=2,
                            year=2020)
 e_cal_despesas.place(x=110, y=71)
 
-l_valor_despesas = Label(frame_operacoes, text="Quantia Total", height=1, anchor=NW, font=('Ivy 10 '), bg=co1, fg=co4)
+l_valor_despesas = Label(frame_operacoes, text="Quantia Total", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
 l_valor_despesas.place(x=10, y=100)
 e_valor_despesas = Entry(frame_operacoes, width=14, justify='left', relief=SOLID)
 e_valor_despesas.place(x=110, y=101)
 
 # Insert button
-img_add_despesas = Image.open("D:/Projetos/Orcamento_Pessoal/images/icons/icon-add.png")
+img_add_despesas = Image.open("images/icons/icon-add.png")
 img_add_despesas = img_add_despesas.resize((17, 17))
 img_add_despesas = ImageTk.PhotoImage(img_add_despesas)
 
 botao_inserir_despesas = Button(frame_operacoes, command=inserir_gastos_main, image=img_add_despesas, compound=LEFT,
-                                anchor=NW, text=" Add".upper(), width=80, overrelief=RIDGE, font=('ivy 7 bold'),
+                                anchor=NW, text=" Add".upper(), width=80, overrelief=RIDGE, font='Ivy 7 bold',
                                 bg=co1, fg=co0)
 botao_inserir_despesas.place(x=110, y=131)
 
 # ==============================
 # Delete operation
 # ==============================
-l_n_categoria = Label(frame_operacoes, text="Delete action", height=1, anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
+l_n_categoria = Label(frame_operacoes, text="Delete action", height=1, anchor=NW, font='Ivy 10 bold', bg=co1, fg=co4)
 l_n_categoria.place(x=10, y=190)
 
 # Delete Button
-img_delete = Image.open("D:/Projetos/Orcamento_Pessoal/images/icons/icon-delete.png")
+img_delete = Image.open("images/icons/icon-delete.png")
 img_delete = img_delete.resize((20, 20))
 img_delete = ImageTk.PhotoImage(img_delete)
 botao_deletar = Button(frame_operacoes, command=deletar_dados, image=img_delete, compound=LEFT, anchor=NW,
-                       text="   Delete".upper(), width=80, overrelief=RIDGE, font=('ivy 7 bold'), bg=co1, fg=co0)
+                       text="   Delete".upper(), width=80, overrelief=RIDGE, font='Ivy 7 bold', bg=co1, fg=co0)
 botao_deletar.place(x=110, y=190)
 
 # ==============================
 # Income settings
 # ==============================
 l_descricao = Label(frame_configuracao, text="Enter new income", height=1, anchor=NW, relief="flat",
-                    font=('Verdana 10 bold'), bg=co1, fg=co4)
+                    font='Verdana 10 bold', bg=co1, fg=co4)
 l_descricao.place(x=10, y=10)
 
-l_cal_receitas = Label(frame_configuracao, text="Date", height=1, anchor=NW, font=('Ivy 10 '), bg=co1, fg=co4)
+l_cal_receitas = Label(frame_configuracao, text="Date", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
 l_cal_receitas.place(x=10, y=40)
 e_cal_receitas = DateEntry(frame_configuracao, width=12, background='darkblue', foreground='white', borderwidth=2,
                            year=2020)
 e_cal_receitas.place(x=110, y=41)
 
-l_valor_receitas = Label(frame_configuracao, text="Total Amount", height=1, anchor=NW, font=('Ivy 10 '), bg=co1,
+l_valor_receitas = Label(frame_configuracao, text="Total Amount", height=1, anchor=NW, font='Ivy 10', bg=co1,
                          fg=co4)
 l_valor_receitas.place(x=10, y=70)
 e_valor_receitas = Entry(frame_configuracao, width=14, justify='left', relief="solid")
 e_valor_receitas.place(x=110, y=71)
 
 # Insert Button
-img_add_receitas = Image.open("D:/Projetos/Orcamento_Pessoal/images/icons/icon-add.png")
+img_add_receitas = Image.open("images/icons/icon-add.png")
 img_add_receitas = img_add_receitas.resize((17, 17))
 img_add_receitas = ImageTk.PhotoImage(img_add_receitas)
 botao_inserir_receitas = Button(frame_configuracao, command=inserir_receitas_main, image=img_add_receitas,
@@ -495,13 +495,13 @@ botao_inserir_receitas.place(x=110, y=111)
 # ==============================
 # New Category operation
 # ==============================
-l_n_categoria = Label(frame_configuracao, text="Category", height=1, anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
+l_n_categoria = Label(frame_configuracao, text="Category", height=1, anchor=NW, font='Ivy 10 bold', bg=co1, fg=co4)
 l_n_categoria.place(x=10, y=160)
 e_n_categoria = Entry(frame_configuracao, width=14, justify='left', relief="solid")
 e_n_categoria.place(x=110, y=160)
 
 # Insert Button
-img_add_categoria = Image.open("D:/Projetos/Orcamento_Pessoal/images/icons/icon-add.png")
+img_add_categoria = Image.open("images/icons/icon-add.png")
 img_add_categoria = img_add_categoria.resize((17, 17))
 img_add_categoria = ImageTk.PhotoImage(img_add_categoria)
 botao_inserir_categoria = Button(frame_configuracao, command=inserir_categoria_main, image=img_add_categoria,
@@ -510,6 +510,6 @@ botao_inserir_categoria = Button(frame_configuracao, command=inserir_categoria_m
 botao_inserir_categoria.place(x=110, y=190)
 
 # ==============================
-# Window
+#  Main window
 # ==============================
 janela.mainloop()
