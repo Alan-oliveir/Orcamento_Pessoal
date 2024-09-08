@@ -277,7 +277,7 @@ e_valor_despesas = Entry(frame_operacoes, width=14, justify='left',relief="solid
 e_valor_despesas.place(x=110, y=101)
 
 # Botao Inserir
-img_add_despesas  = Image.open('add.png')
+img_add_despesas  = Image.open('D:/Projetos/Orcamento_Pessoal/images/icons/icons8-add-48.png')
 img_add_despesas = img_add_despesas.resize((17,17))
 img_add_despesas = ImageTk.PhotoImage(img_add_despesas)
 
@@ -291,7 +291,7 @@ l_n_categoria.place(x=10, y=190)
 
 
 # Botao Deletar
-img_delete  = Image.open('delete.png')
+img_delete  = Image.open('D:/Projetos/Orcamento_Pessoal/images/icons/icons8-delete-48.png')
 img_delete = img_delete.resize((20, 20))
 img_delete = ImageTk.PhotoImage(img_delete)
 botao_deletar = Button(frame_operacoes, image=img_delete, compound=LEFT, anchor=NW, text="   Deletar".upper(), width=80, overrelief=RIDGE,  font=('ivy 7 bold'),bg=co1, fg=co0 )
@@ -313,7 +313,7 @@ e_valor_receitas = Entry(frame_configuracao, width=14, justify='left',relief="so
 e_valor_receitas.place(x=110, y=71)
 
 # Botao Inserir
-img_add_receitas  = Image.open('add.png')
+img_add_receitas  = Image.open('D:/Projetos/Orcamento_Pessoal/images/icons/icons8-add-48.png')
 img_add_receitas = img_add_receitas.resize((17,17))
 img_add_receitas = ImageTk.PhotoImage(img_add_receitas)
 botao_inserir_receitas = Button(frame_configuracao, image=img_add_receitas, compound=LEFT, anchor=NW, text=" Adicionar".upper(), width=80, overrelief=RIDGE,  font=('ivy 7 bold'),bg=co1, fg=co0 )
@@ -328,7 +328,7 @@ e_n_categoria = Entry(frame_configuracao, width=14, justify='left',relief="solid
 e_n_categoria.place(x=110, y=160)
 
 # Botao Inserir
-img_add_categoria  = Image.open('add.png')
+img_add_categoria  = Image.open('D:/Projetos/Orcamento_Pessoal/images/icons/icons8-add-48.png')
 img_add_categoria = img_add_categoria.resize((17,17))
 img_add_categoria = ImageTk.PhotoImage(img_add_categoria)
 botao_inserir_categoria = Button(frame_configuracao,image=img_add_categoria, compound=LEFT, anchor=NW, text=" Adicionar".upper(), width=80, overrelief=RIDGE,  font=('ivy 7 bold'),bg=co1, fg=co0 )
