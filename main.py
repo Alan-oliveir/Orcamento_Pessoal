@@ -25,9 +25,8 @@ from tkcalendar import DateEntry
 # ==========================
 # Import functions from view
 # ==========================
-from view import (bar_valores, pie_valores, inserir_categoria, ver_categorias,
-                  inserir_receita, inserir_gastos, tabela, deletar_gastos,
-                  deletar_receitas, percentagem_valor)
+from view import (bar_valores, pie_valores, inserir_categoria, ver_categorias, inserir_receita, inserir_gastos, tabela,
+                  deletar_gastos, deletar_receitas, percentagem_valor)
 
 # Defining tree as global
 global tree
@@ -52,25 +51,25 @@ colors = ['#5588bb', '#66bbbb', '#99bb55', '#ee9944', '#444466', '#bb5555']
 # ==========================
 janela = Tk()
 janela.title("")
-janela.geometry('900x650')
+janela.geometry('890x670')
 janela.configure(background=co9)
 janela.resizable(width=FALSE, height=FALSE)
 
 style = ttk.Style(janela)
-style.theme_use("clam")
-style.configure("Treeview", highlightthickness=0, bd=0, font=('Calibri', 9))  # Modify the font of the body
+style.theme_use("default")
+style.configure("Treeview", highlightthickness=0, bd=0, font=('Calibre', 9))  # Modify the font of the body
 
 # ==========================
 # Frames
 # ==========================
-frameTop = Frame(janela, width=1043, height=50, bg=co1, relief="flat")
-frameTop.grid(row=0, column=0, padx=0, pady=0, sticky=NSEW)
+frameTop = Frame(janela, width=880, height=50, bg=co1, relief="flat")
+frameTop.grid(row=0, column=0, padx=5, pady=0, sticky=NSEW)
 
-frameCenter = Frame(janela, width=1043, height=361, bg=co1, pady=20, relief="raised")
-frameCenter.grid(row=1, column=0, padx=0, pady=1, sticky=NSEW)
+frameCenter = Frame(janela, width=880, height=361, bg=co1, pady=20, relief="flat")
+frameCenter.grid(row=1, column=0, padx=5, pady=1, sticky=NSEW)
 
-frameBottom = Frame(janela, width=1043, height=300, bg=co1, relief="flat")
-frameBottom.grid(row=2, column=0, padx=10, pady=0, sticky=NSEW)
+frameBottom = Frame(janela, width=880, height=300, bg=co1, relief="flat")
+frameBottom.grid(row=2, column=0, padx=5, pady=0, sticky=NSEW)
 
 frame_right = Frame(frameCenter, width=580, height=250, bg=co2)
 frame_right.place(x=415, y=5)
@@ -82,7 +81,7 @@ app_img = Image.open("images/icons/icon-budget.png")
 app_img = app_img.resize((45, 45))
 app_img = ImageTk.PhotoImage(app_img)
 
-app_logo = Label(frameTop, image=app_img, text=" Orçamento pessoal", width=900, compound=LEFT, padx=5, relief=RAISED,
+app_logo = Label(frameTop, image=app_img, text="Orçamento Pessoal", width=900, compound=LEFT, padx=5, relief="flat",
                  anchor=NW, font='Verdana 20 bold', bg=co1, fg=co4)
 
 app_logo.place(x=0, y=0)
@@ -92,7 +91,7 @@ app_logo.place(x=0, y=0)
 # Function to insert categories
 # ==============================
 def inserir_categoria_main():
-    nome = e_n_categoria.get()
+    nome = e_nova_categoria.get()
 
     lista_inserir = [nome]
 
@@ -105,7 +104,7 @@ def inserir_categoria_main():
 
     messagebox.showinfo("Sucesso", "Os dados foram inseridos com sucesso!")
 
-    e_n_categoria.delete(0, END)
+    e_nova_categoria.delete(0, END)
 
     # Fetching category values
     categorias_funcao = ver_categorias()
@@ -123,7 +122,7 @@ def inserir_categoria_main():
 # ==============================
 def inserir_receitas_main():
     nome = 'Receitas'
-    data = e_cal_receitas.get()
+    data = e_data_receitas.get()
     quantia = e_valor_receitas.get()
 
     lista_inserir = [nome, data, quantia]
@@ -138,12 +137,12 @@ def inserir_receitas_main():
 
     messagebox.showinfo('Sucesso', 'Os dados foram inseridos com sucesso!')
 
-    e_cal_receitas.delete(0, END)
+    e_data_receitas.delete(0, END)
     e_valor_receitas.delete(0, END)
 
     # Updating data
     mostrar_renda()
-    percentagem()
+    porcentagem()
     grafico_bar()
     resumo()
     grafico_pie()
@@ -154,7 +153,7 @@ def inserir_receitas_main():
 # ==============================
 def inserir_gastos_main():
     nome = combo_categoria_despesas.get()
-    data = e_cal_despesas.get()
+    data = e_data_despesas.get()
     quantia = e_valor_despesas.get()
 
     lista_inserir = [nome, data, quantia]
@@ -170,12 +169,12 @@ def inserir_gastos_main():
     messagebox.showinfo('Sucesso', 'Os dados foram inseridos com sucesso!')
 
     combo_categoria_despesas.delete(0, END)
-    e_cal_despesas.delete(0, END)
+    e_data_despesas.delete(0, END)
     e_valor_despesas.delete(0, END)
 
     # Updating data
     mostrar_renda()
-    percentagem()
+    porcentagem()
     grafico_bar()
     resumo()
     grafico_pie()
@@ -198,7 +197,7 @@ def deletar_dados():
 
             # Updating data
             mostrar_renda()
-            percentagem()
+            porcentagem()
             grafico_bar()
             resumo()
             grafico_pie()
@@ -209,7 +208,7 @@ def deletar_dados():
 
             # Updating data
             mostrar_renda()
-            percentagem()
+            porcentagem()
             grafico_bar()
             resumo()
             grafico_pie()
@@ -221,9 +220,8 @@ def deletar_dados():
 # ===============================
 # Function that show percent data
 # ===============================
-def percentagem():
-    l_nome = Label(frameCenter, text="Porcentagem da receita restante", height=1, anchor=NW, font=('Verdana 12 '),
-                   bg=co1, fg=co4)
+def porcentagem():
+    l_nome = Label(frameCenter, text="Porcentagem gasta:", height=1, anchor=NW, font='Verdana 12', bg=co1, fg=co4)
     l_nome.place(x=7, y=5)
 
     style = ttk.Style()
@@ -237,12 +235,12 @@ def percentagem():
 
     valor = percentagem_valor()[0]
     print(valor)
-    l_percentagem = Label(frameCenter, text='{:,.2f} %'.format(valor), height=1, anchor=NW, font=('Verdana 12 '),
+    l_percentagem = Label(frameCenter, text='{:,.2f} %'.format(valor), height=1, anchor=NW, font='Verdana 12',
                           bg=co1, fg=co4)
     l_percentagem.place(x=200, y=35)
 
 
-percentagem()
+porcentagem()
 
 
 # ==============================
@@ -264,10 +262,8 @@ def grafico_bar():
     # Set individual bar labels using the above list
     for i in ax.patches:
         # get_x pulls left or right; get_height pushes up or down
-        ax.text(i.get_x() - .001, i.get_height() + .5,
-                str("{:,.0f}".format(lista_valores[c])), fontsize=17, fontstyle='italic', verticalalignment='bottom',
-                color='dimgrey')
-
+        ax.text(i.get_x() - .001, i.get_height() + .5, str("{:,.0f}".format(lista_valores[c])), fontsize=17,
+                fontstyle='italic', verticalalignment='bottom', color='dimgrey')
         c += 1
 
     ax.set_xticklabels(lista_meses, fontsize=16)
@@ -299,30 +295,36 @@ grafico_bar()
 def resumo():
     valor = bar_valores()
 
-    l_linha = Label(frameCenter, text="", width=215, height=1, anchor=NW, font=('arial 1'), bg='#545454')
+    l_linha = Label(frameCenter, text="", width=215, height=1, anchor=NW, font='arial 1', bg='#545454')
     l_linha.place(x=309, y=52)
-    l_sumario = Label(frameCenter, text="Total Renda Mensal      ".upper(), height=1, anchor=NW, font=('Verdana 12'),
+
+    l_sumario = Label(frameCenter, text="Total: Renda Mensal      ".upper(), height=1, anchor=NW, font='Verdana 12',
                       bg=co1, fg='#83a9e6')
     l_sumario.place(x=306, y=35)
-    l_sumario = Label(frameCenter, text='R$ {:,.2f}'.format(valor[0]), height=1, anchor=NW, font=('arial 17 '), bg=co1,
+
+    l_sumario = Label(frameCenter, text='R$ {:,.2f}'.format(valor[0]), height=1, anchor=NW, font='arial 17 ', bg=co1,
                       fg='#545454')
     l_sumario.place(x=306, y=70)
 
-    l_linha = Label(frameCenter, text="", width=215, height=1, anchor=NW, font=('arial 1'), bg='#545454')
+    l_linha = Label(frameCenter, text="", width=215, height=1, anchor=NW, font='arial 1', bg='#545454')
     l_linha.place(x=309, y=132)
-    l_sumario = Label(frameCenter, text="Total Despesas Mensais".upper(), height=1, anchor=NW, font=('Verdana 12'),
+
+    l_sumario = Label(frameCenter, text="Total: Gasto Mensal     ".upper(), height=1, anchor=NW, font='Verdana 12',
                       bg=co1, fg='#83a9e6')
     l_sumario.place(x=306, y=115)
-    l_sumario = Label(frameCenter, text='R$ {:,.2f}'.format(valor[1]), height=1, anchor=NW, font=('arial 17 '), bg=co1,
+
+    l_sumario = Label(frameCenter, text='R$ {:,.2f}'.format(valor[1]), height=1, anchor=NW, font='arial 17', bg=co1,
                       fg='#545454')
     l_sumario.place(x=306, y=150)
 
-    l_linha = Label(frameCenter, text="", width=215, height=1, anchor=NW, font=('arial 1 '), bg='#545454')
+    l_linha = Label(frameCenter, text="", width=215, height=1, anchor=NW, font='arial 1', bg='#545454')
     l_linha.place(x=309, y=207)
-    l_sumario = Label(frameCenter, text="Total Saldo da Caixa    ".upper(), height=1, anchor=NW, font=('Verdana 12'),
+
+    l_sumario = Label(frameCenter, text="Total: Saldo Mensal     ".upper(), height=1, anchor=NW, font='Verdana 12',
                       bg=co1, fg='#83a9e6')
     l_sumario.place(x=306, y=190)
-    l_sumario = Label(frameCenter, text='R$ {:,.2f}'.format(valor[2]), height=1, anchor=NW, font=('arial 17 '), bg=co1,
+
+    l_sumario = Label(frameCenter, text='R$ {:,.2f}'.format(valor[2]), height=1, anchor=NW, font='arial 17', bg=co1,
                       fg='#545454')
     l_sumario.place(x=306, y=220)
 
@@ -356,7 +358,7 @@ grafico_pie()
 # Creating frames for tables
 # ==============================
 frame_renda = Frame(frameBottom, width=300, height=250, bg=co1)
-frame_renda.grid(row=0, column=0)
+frame_renda.grid(row=0, column=0, padx=5)
 
 frame_operacoes = Frame(frameBottom, width=220, height=250, bg=co1)
 frame_operacoes.grid(row=0, column=1, padx=5)
@@ -367,7 +369,7 @@ frame_configuracao.grid(row=0, column=2, padx=5)
 # ==============================
 # Monthly income table
 # ==============================
-l_income = Label(frameCenter, text="Tabela Receitas e Despesas", height=1, anchor=NW, font='Verdana 12', bg=co1,
+l_income = Label(frameCenter, text="Tabela de receitas e despesas:", height=1, anchor=NW, font='Verdana 12', bg=co1,
                  fg=co4)
 l_income.place(x=5, y=309)
 
@@ -377,7 +379,7 @@ l_income.place(x=5, y=309)
 # ==============================
 def mostrar_renda():
     # Creating a treeview with dual scrollbars
-    tabela_head = ['#Id', 'Categoria', 'Data', 'Quantia']
+    tabela_head = ['#Id', 'Categoria', 'Data', 'Valor']
     lista_itens = tabela()
     global tree
     tree = ttk.Treeview(frame_renda, selectmode="extended", columns=tabela_head, show="headings")
@@ -394,7 +396,7 @@ def mostrar_renda():
     vsb.grid(column=1, row=0, sticky='ns')
     hsb.grid(column=0, row=1, sticky='ew')
     hd = ["center", "center", "center", "center"]
-    h = [30, 100, 100, 100]
+    h = [40, 115, 115, 100]
     n = 0
 
     for col in tabela_head:
@@ -412,33 +414,34 @@ mostrar_renda()
 # ==============================
 # Expense settings
 # ==============================
-l_descricao = Label(frame_operacoes, text="Insira novas despesas", height=1, anchor=NW, relief="flat",
+l_descricao = Label(frame_operacoes, text="Insira novas despesas:", height=1, anchor=NW, relief="flat",
                     font='Verdana 10 bold', bg=co1, fg=co4)
-l_descricao.place(x=10, y=10)
+l_descricao.place(x=25, y=10)
 
-l_descricao = Label(frame_operacoes, text="Categoria", height=1, anchor=NW, relief="flat", font='Ivy 10', bg=co1,
+l_descricao = Label(frame_operacoes, text="Categoria:", height=1, anchor=NW, relief="flat", font='Ivy 10', bg=co1,
                     fg=co4)
-l_descricao.place(x=10, y=40)
+l_descricao.place(x=25, y=40)
 
 # Getting categories
 categorias_funcao = ver_categorias()
 categorias = [i[1] for i in categorias_funcao]
 
-combo_categoria_despesas = ttk.Combobox(frame_operacoes, width=10, font=('Ivy 10'))
+combo_categoria_despesas = ttk.Combobox(frame_operacoes, width=10, font='Ivy 10')
 combo_categoria_despesas['values'] = categorias
-combo_categoria_despesas.place(x=110, y=41)
+combo_categoria_despesas.place(x=125, y=41)
 
-l_cal_despesas = Label(frame_operacoes, text="Data", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
-l_cal_despesas.place(x=10, y=70)
+l_data_despesas = Label(frame_operacoes, text="Data:", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
+l_data_despesas.place(x=25, y=70)
 
-e_cal_despesas = DateEntry(frame_operacoes, width=12, background='darkblue', foreground='white', borderwidth=2,
-                           year=2020)
-e_cal_despesas.place(x=110, y=71)
+e_data_despesas = DateEntry(frame_operacoes, width=12, background='darkblue', foreground='white', borderwidth=2,
+                            year=2020)
+e_data_despesas.place(x=125, y=71)
 
-l_valor_despesas = Label(frame_operacoes, text="Quantia Total", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
-l_valor_despesas.place(x=10, y=100)
+l_valor_despesas = Label(frame_operacoes, text="Valor total:", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
+l_valor_despesas.place(x=25, y=100)
+
 e_valor_despesas = Entry(frame_operacoes, width=14, justify='left', relief=SOLID)
-e_valor_despesas.place(x=110, y=101)
+e_valor_despesas.place(x=125, y=101)
 
 # Insert button
 img_add_despesas = Image.open("images/icons/icon-add.png")
@@ -448,66 +451,75 @@ img_add_despesas = ImageTk.PhotoImage(img_add_despesas)
 botao_inserir_despesas = Button(frame_operacoes, command=inserir_gastos_main, image=img_add_despesas, compound=LEFT,
                                 anchor=NW, text=" Add".upper(), width=80, overrelief=RIDGE, font='Ivy 7 bold',
                                 bg=co1, fg=co0)
-botao_inserir_despesas.place(x=110, y=131)
+botao_inserir_despesas.place(x=125, y=131)
 
 # ==============================
 # Delete operation
 # ==============================
-l_n_categoria = Label(frame_operacoes, text="Delete action", height=1, anchor=NW, font='Ivy 10 bold', bg=co1, fg=co4)
-l_n_categoria.place(x=10, y=190)
+l_nova_categoria = Label(frame_operacoes, text="Excluir item:", height=1, anchor=NW, font='Ivy 10 bold', bg=co1, fg=co4)
+l_nova_categoria.place(x=25, y=180)
 
 # Delete Button
 img_delete = Image.open("images/icons/icon-delete.png")
 img_delete = img_delete.resize((20, 20))
 img_delete = ImageTk.PhotoImage(img_delete)
+
 botao_deletar = Button(frame_operacoes, command=deletar_dados, image=img_delete, compound=LEFT, anchor=NW,
                        text="   Delete".upper(), width=80, overrelief=RIDGE, font='Ivy 7 bold', bg=co1, fg=co0)
-botao_deletar.place(x=110, y=190)
+botao_deletar.place(x=25, y=205)
 
 # ==============================
 # Income settings
 # ==============================
-l_descricao = Label(frame_configuracao, text="Enter new income", height=1, anchor=NW, relief="flat",
+l_descricao = Label(frame_configuracao, text="Insira novas receitas:", height=1, anchor=NW, relief="flat",
                     font='Verdana 10 bold', bg=co1, fg=co4)
-l_descricao.place(x=10, y=10)
+l_descricao.place(x=25, y=10)
 
-l_cal_receitas = Label(frame_configuracao, text="Date", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
-l_cal_receitas.place(x=10, y=40)
-e_cal_receitas = DateEntry(frame_configuracao, width=12, background='darkblue', foreground='white', borderwidth=2,
-                           year=2020)
-e_cal_receitas.place(x=110, y=41)
+l_data_receitas = Label(frame_configuracao, text="Date", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
+l_data_receitas.place(x=25, y=40)
 
-l_valor_receitas = Label(frame_configuracao, text="Total Amount", height=1, anchor=NW, font='Ivy 10', bg=co1,
-                         fg=co4)
-l_valor_receitas.place(x=10, y=70)
+e_data_receitas = DateEntry(frame_configuracao, width=12, background='darkblue', foreground='white', borderwidth=2,
+                            year=2020)
+e_data_receitas.place(x=125, y=41)
+
+l_valor_receitas = Label(frame_configuracao, text="Valor total:", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
+l_valor_receitas.place(x=25, y=70)
+
 e_valor_receitas = Entry(frame_configuracao, width=14, justify='left', relief="solid")
-e_valor_receitas.place(x=110, y=71)
+e_valor_receitas.place(x=125, y=71)
 
 # Insert Button
 img_add_receitas = Image.open("images/icons/icon-add.png")
 img_add_receitas = img_add_receitas.resize((17, 17))
 img_add_receitas = ImageTk.PhotoImage(img_add_receitas)
+
 botao_inserir_receitas = Button(frame_configuracao, command=inserir_receitas_main, image=img_add_receitas,
                                 compound=LEFT, anchor=NW, text=" Add".upper(), width=80, overrelief=RIDGE,
-                                font=('ivy 7 bold'), bg=co1, fg=co0)
-botao_inserir_receitas.place(x=110, y=111)
+                                font='ivy 7 bold', bg=co1, fg=co0)
+botao_inserir_receitas.place(x=125, y=101)
 
 # ==============================
 # New Category operation
 # ==============================
-l_n_categoria = Label(frame_configuracao, text="Category", height=1, anchor=NW, font='Ivy 10 bold', bg=co1, fg=co4)
-l_n_categoria.place(x=10, y=160)
-e_n_categoria = Entry(frame_configuracao, width=14, justify='left', relief="solid")
-e_n_categoria.place(x=110, y=160)
+l_categoria = Label(frame_configuracao, text="Insira nova categoria:", height=1, anchor=NW, font='Ivy 10 bold', bg=co1,
+                    fg=co4)
+l_categoria.place(x=25, y=150)
+
+l_nova_categoria = Label(frame_configuracao, text="Categoria:", height=1, anchor=NW, font='Ivy 10', bg=co1, fg=co4)
+l_nova_categoria.place(x=25, y=180)
+
+e_nova_categoria = Entry(frame_configuracao, width=14, justify='left', relief="solid")
+e_nova_categoria.place(x=125, y=180)
 
 # Insert Button
 img_add_categoria = Image.open("images/icons/icon-add.png")
 img_add_categoria = img_add_categoria.resize((17, 17))
 img_add_categoria = ImageTk.PhotoImage(img_add_categoria)
+
 botao_inserir_categoria = Button(frame_configuracao, command=inserir_categoria_main, image=img_add_categoria,
                                  compound=LEFT, anchor=NW, text=" Add".upper(), width=80, overrelief=RIDGE,
-                                 font=('ivy 7 bold'), bg=co1, fg=co0)
-botao_inserir_categoria.place(x=110, y=190)
+                                 font='ivy 7 bold', bg=co1, fg=co0)
+botao_inserir_categoria.place(x=125, y=210)
 
 # ==============================
 #  Main window
