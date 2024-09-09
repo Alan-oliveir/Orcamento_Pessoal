@@ -1,4 +1,9 @@
 # ==========================
+# OS
+# ==========================
+import os
+
+# ==========================
 # Tkinter
 # ==========================
 from tkinter import *
@@ -27,6 +32,11 @@ from tkcalendar import DateEntry
 # ==========================
 from view import (bar_valores, pie_valores, inserir_categoria, ver_categorias, inserir_receita, inserir_gastos, tabela,
                   deletar_gastos, deletar_receitas, percentagem_valor)
+
+# ==========================
+# Constants
+# ==========================
+PATH = os.path.dirname(os.path.realpath(__file__))  # Path to images
 
 # Defining tree as global
 global tree
@@ -77,7 +87,7 @@ frame_right.place(x=415, y=5)
 # ==========================
 # Logo
 # ==========================
-app_img = Image.open("images/icons/icon-budget.png")
+app_img = Image.open(PATH + "/images/icons/icon-budget.png")
 app_img = app_img.resize((45, 45))
 app_img = ImageTk.PhotoImage(app_img)
 
@@ -444,7 +454,7 @@ e_valor_despesas = Entry(frame_operacoes, width=14, justify='left', relief=SOLID
 e_valor_despesas.place(x=125, y=101)
 
 # Insert button
-img_add_despesas = Image.open("images/icons/icon-add.png")
+img_add_despesas = Image.open(PATH + "/images/icons/icon-add.png")
 img_add_despesas = img_add_despesas.resize((17, 17))
 img_add_despesas = ImageTk.PhotoImage(img_add_despesas)
 
@@ -460,7 +470,7 @@ l_nova_categoria = Label(frame_operacoes, text="Excluir item:", height=1, anchor
 l_nova_categoria.place(x=25, y=180)
 
 # Delete Button
-img_delete = Image.open("images/icons/icon-delete.png")
+img_delete = Image.open(PATH + "/images/icons/icon-delete.png")
 img_delete = img_delete.resize((20, 20))
 img_delete = ImageTk.PhotoImage(img_delete)
 
@@ -489,7 +499,7 @@ e_valor_receitas = Entry(frame_configuracao, width=14, justify='left', relief="s
 e_valor_receitas.place(x=125, y=71)
 
 # Insert Button
-img_add_receitas = Image.open("images/icons/icon-add.png")
+img_add_receitas = Image.open(PATH + "/images/icons/icon-add.png")
 img_add_receitas = img_add_receitas.resize((17, 17))
 img_add_receitas = ImageTk.PhotoImage(img_add_receitas)
 
@@ -512,7 +522,7 @@ e_nova_categoria = Entry(frame_configuracao, width=14, justify='left', relief="s
 e_nova_categoria.place(x=125, y=180)
 
 # Insert Button
-img_add_categoria = Image.open("images/icons/icon-add.png")
+img_add_categoria = Image.open(PATH + "/images/icons/icon-add.png")
 img_add_categoria = img_add_categoria.resize((17, 17))
 img_add_categoria = ImageTk.PhotoImage(img_add_categoria)
 
