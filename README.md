@@ -19,6 +19,9 @@ Na interface de usuário foi utilizada a biblioteca tkinter. O banco de dados ut
 
 ### Bibliotecas
 - Pillow
+- OS
+- Matplotlib
+- Pandas
 
 ### Banco de dados
 - SQLite
