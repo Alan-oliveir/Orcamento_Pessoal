@@ -1,13 +1,12 @@
 # Import SQLite
-#import sqlite3 as lite
+import sqlite3 as lite
+
+# Import OS
+import os
+import sys
 
 # Import Pandas
 import pandas as pd
-
-
-import os
-import sqlite3 as lite
-import sys
 
 # Determina o caminho base dependendo se está rodando como script ou executável
 if getattr(sys, 'frozen', False):
