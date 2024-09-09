@@ -101,7 +101,7 @@ def tabela():
 
 
 def bar_valores():
-    # Receita Total ------------------------
+    # Receita Total
     receitas = ver_receitas()
     receitas_lista = []
 
@@ -110,7 +110,7 @@ def bar_valores():
 
     receitas_total = sum(receitas_lista)
 
-    # Despesas Total ------------------------
+    # Despesas Total
     gastos = ver_gastos()
     gastos_lista = []
 
@@ -119,14 +119,14 @@ def bar_valores():
 
     gastos_total = sum(gastos_lista)
 
-    # Despesas Total ------------------------
+    # Despesas Total
     saldo_total = receitas_total - gastos_total
 
     return [receitas_total, gastos_total, saldo_total]
 
 
 def percentagem_valor():
-    # Receita Total ------------------------
+    # Receita Total
     receitas = ver_receitas()
     receitas_lista = []
 
@@ -135,7 +135,7 @@ def percentagem_valor():
 
     receitas_total = sum(receitas_lista)
 
-    # Despesas Total ------------------------
+    # Despesas Total
     despesas = ver_gastos()
     despesas_lista = []
 
@@ -144,7 +144,7 @@ def percentagem_valor():
 
     despesas_total = sum(despesas_lista)
 
-    # Despesas Total ------------------------
+    # Despesas Total
     if receitas_total != 0:
         total = (100 - ((receitas_total - despesas_total) / receitas_total) * 100)
     else:
