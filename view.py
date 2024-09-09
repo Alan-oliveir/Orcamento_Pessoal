@@ -1,17 +1,13 @@
-import sys
+# Import SQLite
 import sqlite3 as lite
-from datetime import datetime
 
-# importing pandas
+# Import Pandas
 import pandas as pd
-
-# Criando conexão
-con = lite.connect('dados.db')
 
 
 # Inserir categoria
 def inserir_categoria(i):
-    with con:
+    with lite.connect('dados.db') as con:
         cur = con.cursor()
         query = "INSERT INTO Categoria (nome) VALUES (?)"
         cur.execute(query, i)
@@ -19,7 +15,7 @@ def inserir_categoria(i):
 
 # Inserir receitas
 def inserir_receita(i):
-    with con:
+    with lite.connect('dados.db') as con:
         cur = con.cursor()
         query = "INSERT INTO Receitas (categoria, adicionado_em, valor) VALUES (?,?,?)"
         cur.execute(query, i)
@@ -27,7 +23,7 @@ def inserir_receita(i):
 
 # Inserir gastos
 def inserir_gastos(i):
-    with con:
+    with lite.connect('dados.db') as con:
         cur = con.cursor()
         query = "INSERT INTO Gastos (categoria, retirado_em, valor) VALUES (?,?,?)"
         cur.execute(query, i)
@@ -35,7 +31,7 @@ def inserir_gastos(i):
 
 # Deletar receitas
 def deletar_receitas(i):
-    with con:
+    with lite.connect('dados.db') as con:
         cur = con.cursor()
         query = "DELETE FROM Receitas WHERE id=?"
         cur.execute(query, i)
@@ -43,7 +39,7 @@ def deletar_receitas(i):
 
 # Deletar gastos
 def deletar_gastos(i):
-    with con:
+    with lite.connect('dados.db') as con:
         cur = con.cursor()
         query = "DELETE FROM Gastos WHERE id=?"
         cur.execute(query, i)
@@ -52,7 +48,7 @@ def deletar_gastos(i):
 # Ver Categorias
 def ver_categorias():
     lista_itens = []
-    with con:
+    with lite.connect('dados.db') as con:
         cur = con.cursor()
         cur.execute("SELECT * FROM Categoria")
         rows = cur.fetchall()
@@ -64,7 +60,7 @@ def ver_categorias():
 # Ver Receitas
 def ver_receitas():
     lista_itens = []
-    with con:
+    with lite.connect('dados.db') as con:
         cur = con.cursor()
         cur.execute("SELECT * FROM Receitas")
         rows = cur.fetchall()
@@ -76,7 +72,7 @@ def ver_receitas():
 # Ver Gastos
 def ver_gastos():
     lista_itens = []
-    with con:
+    with lite.connect('dados.db') as con:
         cur = con.cursor()
         cur.execute("SELECT * FROM Gastos")
         rows = cur.fetchall()
