@@ -1,7 +1,7 @@
 # Orçamento Pessoal
 Aplicativo de controle de despesas pessoais com gráficos em Python  
  
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/Alan-oliveir/Orcamento_Pessoal/blob/main/LICENSE)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/Alan-oliveir/Orcamento_Pessoal/blob/main/LICENSE.md)
 
 # Sobre o projeto
 Orçamento Pessoal é um programa simples de cadastro de receitas e desppesas escrito em python que armazena informações sobre ganhos mensais. Com o programa pode registrar o tipo de despesa ou recita, data e valor. 
